@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "source": "Protomaps France extract, 2026-11-01",
+  "coverage": [
+    1.4,
+    48.1,
+    3.6,
+    49.25
+  ],
+  "nativeMaxZoom": 14,
+  "displayMaxZoom": 19,
+  "overviewCoverage": [
+    1.4,
+    48.1,
+    3.6,
+    49.25
+  ],
+  "tileCount": 11750,
+  "packCount": 248,
+  "totalBytes": 145475185,
+  "attribution": "© OpenStreetMap contributors · Protomaps",
+  "license": "ODbL produced work",
+  "licenseUrl": "https://www.openstreetmap.org/copyright"
+}

@@ -1,0 +1,33 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import StripeClient from 'stripe';
+import {testKey,testObject,safeUrl,ACCOUNT,ENVIRONMENT} from '../src/config.mjs';
+import {TestStripe} from '../src/stripe.mjs';
+import {buildHandler,webhookHandler} from '../src/server.mjs';
+import {openDb,hashPassword} from '../src/db.mjs';
+import {Payments} from '../src/payments.mjs';
+import {FakeStripe} from './fake-stripe.mjs';
+
+test('all live/malformed keys and objects fail closed',()=>{for(const value of ['sk_live_abc','rk_live_abc','pk_test_abc','',undefined,'sk_test_a\n'])assert.throws(()=>testKey(value),/TEST_KEY_REQUIRED/);assert.equal(testKey('rk_test_fixture'),'rk_test_fixture');for(const o of [{livemode:true},{},null])assert.throws(()=>testObject(o),/REJECTED/);});
+test('Stripe account verification rejects wrong account and live balance',async()=>{const s=new TestStripe('rk_test_fixture');s.client={balance:{retrieve:async()=>({livemode:false})},accounts:{retrieve:async()=>({id:'acct_other'})}};await assert.rejects(s.verify(),/WRONG_STRIPE_ACCOUNT/);s.client.balance.retrieve=async()=>({livemode:true});await assert.rejects(s.verify(),/LIVE_OR_UNVERIFIED/);});
+test('redirects reject lookalike domains, non-HTTPS, embedded credentials, foreign ports and script URLs',()=>{for(const u of ['https://checkout.stripe.com.evil.test/','http://checkout.stripe.com/','https://secret@checkout.stripe.com/','https://checkout.stripe.com:444/','javascript:alert(1)'])assert.throws(()=>safeUrl(u,['checkout.stripe.com']));});
+test('actual Stripe SDK verifies raw signed webhook, rejects tampering, age, live mode and connected events',()=>{const secret='whsec_fixture';const s=new TestStripe('rk_test_fixture',secret);const payload=JSON.stringify({id:'evt_signature',type:'payment_intent.succeeded',livemode:false,data:{object:{id:'pi_fixture'}}});const signature=StripeClient.webhooks.generateTestHeaderString({payload,secret});assert.equal(s.event(Buffer.from(payload),signature).id,'evt_signature');assert.throws(()=>s.event(Buffer.from(payload+' '),signature));const old=StripeClient.webhooks.generateTestHeaderString({payload,secret,timestamp:Math.floor(Date.now()/1000)-600});assert.throws(()=>s.event(Buffer.from(payload),old));for(const extra of [{livemode:true},{account:'acct_other'}]){const p=JSON.stringify({...JSON.parse(payload),...extra});const h=StripeClient.webhooks.generateTestHeaderString({payload:p,secret});assert.throws(()=>s.event(Buffer.from(p),h));}});
+test('hosted checkout uses fixed EUR, manual capture, pinned API, consent checkbox and a deterministic idempotency key',async()=>{const s=new TestStripe('rk_test_fixture');let params,opts;s.client.checkout.sessions.create=async(p,o)=>{params=p;opts=o;return {id:'cs_test_fixture',livemode:false,url:'https://checkout.stripe.com/c/pay/fixture'};};const ride={id:'ride_fixture',passenger_id:'passenger',fare:2475,expires_at:new Date(Date.now()+1800000)};await s.checkout(ride,{stripe_customer:'cus_fixture'},{pickup:'A',dropoff:'B'},{id:'checkout:ride_fixture'});assert.equal(params.line_items[0].price_data.unit_amount,2475);assert.equal(params.line_items[0].price_data.currency,'eur');assert.equal(params.payment_intent_data.capture_method,'manual');assert.equal(params.saved_payment_method_options.payment_method_save,'enabled');assert.equal(params.adaptive_pricing.enabled,false);assert.equal(params.payment_intent_data.application_fee_amount,undefined);assert.equal(params.payment_method_types,undefined);assert.equal(opts.idempotencyKey,`${ENVIRONMENT}:checkout:ride_fixture`);assert.equal(s.client.getApiField('version'),'2026-10-28.endive');});
+test('HTTP: role-bound sessions, CSRF, forged host, amount tampering and oversized bodies are rejected',async t=>{
+ const db=await openDb(true);t.after(()=>db.close());for(const role of ['passenger','driver','admin'])await db.query('INSERT INTO users(id,role,name,email,password_hash) VALUES($1,$1,$1,$2,$3)',[role,`${role}@goome.test`,hashPassword('fixture-only')]);
+ const payments=new Payments(db,new FakeStripe());let handler;
+ const server=http.createServer((req,res)=>handler(req,res));await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(()=>new Promise(r=>server.close(r)));const origin=`http://127.0.0.1:${server.address().port}`;
+ handler=buildHandler({db,payments,role:'passenger',origin});
+ const post=(endpoint,data,headers={})=>fetch(origin+'/api/'+endpoint,{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',...headers},body:JSON.stringify(data)});
+ assert.equal((await post('login',{email:'passenger@goome.test',password:'fixture-only'},{Origin:'https://evil.test'})).status,403);
+ const forged=await new Promise((resolve,reject)=>{const req=http.request(origin+'/api/state',{headers:{Host:'evil.test'}},res=>{res.resume();resolve(res.statusCode);});req.on('error',reject);req.end();});assert.equal(forged,403);
+ assert.equal((await post('login',{email:'admin@goome.test',password:'fixture-only'})).status,401);
+ const login=await post('login',{email:'passenger@goome.test',password:'fixture-only'});assert.equal(login.status,200);const cookie=login.headers.get('set-cookie').split(';')[0];assert.match(login.headers.get('set-cookie'),/HttpOnly; SameSite=Strict/);
+ assert.equal((await post('request',{route:'opera',amount:1},{Cookie:cookie})).status,400);
+ assert.equal((await post('refund',{id:'foreign'},{Cookie:cookie})).status,403);
+ assert.equal((await post('request',{route:'opera'},{Cookie:cookie})).status,200);
+ assert.equal((await post('request',{route:'x'.repeat(9000)},{Cookie:cookie})).status,413);
+ const state=await fetch(origin+'/api/state',{headers:{Cookie:cookie}});const data=await state.json();assert.equal(data.rides[0].fare,2475);assert(!JSON.stringify(data).includes('password_hash'));assert.equal(state.headers.get('x-frame-options'),'DENY');assert.match(state.headers.get('content-security-policy'),/frame-ancestors 'none'/);
+ handler=buildHandler({db,payments,role:'admin',origin});assert.equal((await fetch(origin+'/api/state',{headers:{Cookie:cookie}})).status,401);
+});

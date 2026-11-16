@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-08T18:40:51.153Z",
+  "environment": "local-test-only",
+  "stripeConnected": false,
+  "stripeCredentialsObtained": false,
+  "liveActions": 0,
+  "localAutomatedTests": {
+    "passed": 23,
+    "failed": 0
+  },
+  "latestRedirectAndHttpChecks": {
+    "passed": 6,
+    "failed": 0
+  },
+  "syntaxChecks": "passed",
+  "dependencyAudit": {
+    "vulnerabilities": 0
+  },
+  "browserChecks": [
+    "passenger login",
+    "driver login",
+    "admin login",
+    "payment actions disabled",
+    "database and sessions persist after server restart"
+  ],
+  "externalStripeEndToEnd": "not run: user chose to keep Stripe disconnected",
+  "productionSources": "all three clean and unchanged",
+  "localPreview": "stopped; start with provided launcher",
+  "sourceSHA256": {
+    "config.mjs": "19877c09810af7ac15c8371a1c01f7d48e1d3d46ca9b8bf12246845f35e86da5",
+    "db.mjs": "e5979b29fb6d4f9ae1c2857b353c90a28301e4a72913f72fcc5d0d22029214e3",
+    "payments.mjs": "71d8088efe7bb3bc5463c4d405fea60368e160844188c377a7ffe237e517d67e",
+    "schema.sql": "141237e4bcb4bcbfb20c85d027885e045a341115d447d92a50b18506c2e70b6a",
+    "server.mjs": "7672badb2f0641f14f715a244f037a514755a35c269ad2165aa4e59f48ec5304",
+    "stripe.mjs": "0a424a53836cd4a72041c9347d34b10ff39aadaa1d42015f2dbc69290d198553"
+  }
+}

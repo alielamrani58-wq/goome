@@ -1,0 +1,410 @@
+{
+  "house": {
+    "src": "/figma/house.svg",
+    "width": 23.5012,
+    "height": 23.5,
+    "designNode": "95:5213"
+  },
+  "circle": {
+    "src": "/figma/circle.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "95:5213"
+  },
+  "angle-right": {
+    "src": "/figma/angle-right.svg",
+    "width": 17.5,
+    "height": 17.5,
+    "designNode": "95:5213"
+  },
+  "car": {
+    "src": "/figma/car.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "95:5213"
+  },
+  "pinpoint1": {
+    "src": "/figma/pinpoint1.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "95:5213"
+  },
+  "pinpoint": {
+    "src": "/figma/pinpoint.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "95:5213"
+  },
+  "briefcase": {
+    "src": "/figma/briefcase.svg",
+    "width": 24.3225,
+    "height": 23.5,
+    "designNode": "95:5213"
+  },
+  "bell": {
+    "src": "/figma/bell.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "95:5213"
+  },
+  "person": {
+    "src": "/figma/person.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "95:5213"
+  },
+  "house1": {
+    "src": "/figma/house1.svg",
+    "width": 29.5015,
+    "height": 29.5,
+    "designNode": "95:5213"
+  },
+  "train": {
+    "src": "/figma/train.svg",
+    "width": 29.5,
+    "height": 29.5113,
+    "designNode": "95:5213"
+  },
+  "clock": {
+    "src": "/figma/clock.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "95:5213"
+  },
+  "shield-check": {
+    "src": "/figma/shield-check.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "99:5655"
+  },
+  "calendar": {
+    "src": "/figma/calendar.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "99:5655"
+  },
+  "question": {
+    "src": "/figma/question.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "99:5655"
+  },
+  "gear": {
+    "src": "/figma/gear.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "99:5655"
+  },
+  "credit-card": {
+    "src": "/figma/credit-card.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "pen": {
+    "src": "/figma/pen.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "shield-check1": {
+    "src": "/figma/shield-check1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "power": {
+    "src": "/figma/power.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "gift": {
+    "src": "/figma/gift.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "file": {
+    "src": "/figma/file.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "question1": {
+    "src": "/figma/question1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "gear1": {
+    "src": "/figma/gear1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:5655"
+  },
+  "flag": {
+    "src": "/figma/flag.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:10316"
+  },
+  "car1": {
+    "src": "/figma/car1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:10316"
+  },
+  "text-bubble": {
+    "src": "/figma/text-bubble.svg",
+    "width": 26,
+    "height": 26,
+    "designNode": "98:6091"
+  },
+  "car2": {
+    "src": "/figma/car2.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "102:10316"
+  },
+  "star": {
+    "src": "/figma/star.svg",
+    "width": 16,
+    "height": 16,
+    "designNode": "98:6091"
+  },
+  "share-ios": {
+    "src": "/figma/share-ios.svg",
+    "width": 26,
+    "height": 26,
+    "designNode": "98:6091"
+  },
+  "euro": {
+    "src": "/figma/euro.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "102:10316"
+  },
+  "phone": {
+    "src": "/figma/phone.svg",
+    "width": 26,
+    "height": 26,
+    "designNode": "98:6091"
+  },
+  "arrow-left": {
+    "src": "/figma/arrow-left.svg",
+    "width": 26,
+    "height": 26,
+    "designNode": "99:6888"
+  },
+  "heart": {
+    "src": "/figma/heart.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "99:6888"
+  },
+  "smartphone-notch": {
+    "src": "/figma/smartphone-notch.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:6826"
+  },
+  "person1": {
+    "src": "/figma/person1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:7930"
+  },
+  "info": {
+    "src": "/figma/info.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:6826"
+  },
+  "calendar1": {
+    "src": "/figma/calendar1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:6826"
+  },
+  "send": {
+    "src": "/figma/send.svg",
+    "width": 24.7531,
+    "height": 24.6268,
+    "designNode": "101:6826"
+  },
+  "qr-code": {
+    "src": "/figma/qr-code.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:7930"
+  },
+  "eye": {
+    "src": "/figma/eye.svg",
+    "width": 22.0003,
+    "height": 22,
+    "designNode": "101:9005"
+  },
+  "moon": {
+    "src": "/figma/moon.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:10052"
+  },
+  "power1": {
+    "src": "/figma/power1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:10052"
+  },
+  "lock-closed": {
+    "src": "/figma/lock-closed.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:10052"
+  },
+  "trash": {
+    "src": "/figma/trash.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:10052"
+  },
+  "bank": {
+    "src": "/figma/bank.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:11130"
+  },
+  "map": {
+    "src": "/figma/map.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "101:11130"
+  },
+  "identification": {
+    "src": "/figma/identification.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:9084"
+  },
+  "checkmark": {
+    "src": "/figma/checkmark.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:9084"
+  },
+  "camera": {
+    "src": "/figma/camera.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:9084"
+  },
+  "letter": {
+    "src": "/figma/letter.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "123:9758"
+  },
+  "times": {
+    "src": "/figma/times.svg",
+    "width": 26,
+    "height": 26,
+    "designNode": "95:3497"
+  },
+  "star1": {
+    "src": "/figma/star1.svg",
+    "width": 40,
+    "height": 40,
+    "designNode": "98:7216"
+  },
+  "circle1": {
+    "src": "/figma/circle1.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "92:3379"
+  },
+  "car-selected": {
+    "src": "/figma/car-selected.svg",
+    "width": 28,
+    "height": 28,
+    "designNode": "98:4545"
+  },
+  "airplane": {
+    "src": "/figma/airplane.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "92:3379"
+  },
+  "car-neutral": {
+    "src": "/figma/car-neutral.svg",
+    "width": 28,
+    "height": 28,
+    "designNode": "98:4545"
+  },
+  "drive-active": {
+    "src": "/figma/drive-active.svg",
+    "width": 29.5,
+    "height": 29.5,
+    "designNode": "102:10316"
+  },
+  "car-online": {
+    "src": "/figma/car-online.svg",
+    "width": 22,
+    "height": 22,
+    "designNode": "102:10316"
+  },
+  "star-empty": {
+    "src": "/figma/star-empty.svg",
+    "width": 40,
+    "height": 40,
+    "designNode": "98:7216"
+  },
+  "clock-active": {
+    "src": "/figma/clock-active.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "98:8825"
+  },
+  "logo": {
+    "src": "/figma/logo.svg",
+    "width": 124,
+    "height": 38.0938,
+    "designNode": "95:5213"
+  },
+  "euro-active": {
+    "src": "/figma/euro-active.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "102:14040"
+  },
+  "person-active": {
+    "src": "/figma/person-active.svg",
+    "width": 24,
+    "height": 24,
+    "designNode": "99:5655"
+  },
+  "search-wave-1": {
+    "src": "/figma/search-wave-1.svg",
+    "width": 227.848,
+    "height": 227.848,
+    "designNode": "95:7110"
+  },
+  "search-wave-2": {
+    "src": "/figma/search-wave-2.svg",
+    "width": 151.899,
+    "height": 151.899,
+    "designNode": "95:7110"
+  },
+  "search-wave-3": {
+    "src": "/figma/search-wave-3.svg",
+    "width": 83.5443,
+    "height": 83.5443,
+    "designNode": "95:7110"
+  },
+  "receipt-check": {
+    "src": "/figma/receipt-check.svg",
+    "width": 29,
+    "height": 29,
+    "designNode": "98:6676"
+  }
+}

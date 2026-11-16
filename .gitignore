@@ -1,0 +1,37 @@
+# Credentials, private runtime data and local databases (all app folders)
+.env
+.env.*
+!.env.example
+.dev.vars*
+.secrets/
+.local/
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+# Dependencies, build results and local tools
+node_modules/
+dist/
+build/
+coverage/
+.next/
+.vinext/
+.wrangler/
+.sites-runtime/
+.expo/
+.codex/
+.agents/
+outputs/
+work/
+*.tsbuildinfo
+*.log
+.DS_Store
+__pycache__/
+
+# Local secret scan output
+secret-scan*.json

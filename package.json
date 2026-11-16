@@ -1,0 +1,17 @@
+{
+  "name": "goome",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test packages/domain/test/*.test.mjs",
+    "dev:passenger": "npm --prefix web run dev -- --port 5173",
+    "dev:driver": "npm --prefix driver-web run dev -- --port 5174",
+    "dev:admin": "npm --prefix admin-web run dev -- --port 5175",
+    "dev:payments": "npm --prefix payment-test start",
+    "test:payments": "npm --prefix payment-test test",
+    "check:payments": "npm --prefix payment-test run check"
+  }
+}
